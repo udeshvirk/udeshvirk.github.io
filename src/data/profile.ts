@@ -51,16 +51,30 @@ export const experience = [
     type: 'Full-time',
     location: 'Bengaluru, India',
     description:
-      'Led frontend development initiatives for enterprise cybersecurity products, focusing on scalable architectures and complex data visualizations.',
+      'Led frontend architecture for enterprise applications with focus on scalability and maintainability. Designed reusable components and frameworks, improving code reuse across teams.',
     highlights: [
-      'Spearheaded the development of complex dashboards and security visualization interfaces',
-      'Improved application rendering performance and optimized large data sets',
-      'Collaborated closely with product and design to map complex security paradigms into intuitive UIs',
+      'Worked closely with stakeholders to translate complex requirements into scalable technical solutions',
+      'Improved UI performance and responsiveness through optimized rendering and data handling strategies',
     ],
     tags: ['React', 'TypeScript', 'Data Visualization', 'Cybersecurity'],
   },
   {
     id: 3,
+    role: 'Senior UI Developer',
+    company: 'Relevance Lab',
+    companyUrl: 'https://relevancelab.com',
+    period: 'Prior to ColorTokens',
+    type: 'Full-time',
+    location: 'Bengaluru, India',
+    description:
+      'Led development of web applications and mentored engineering teams. Established best practices for frontend development and code quality.',
+    highlights: [
+      'Delivered scalable UI solutions aligned with client requirements',
+    ],
+    tags: ['JavaScript', 'HTML5', 'CSS3', 'React'],
+  },
+  {
+    id: 4,
     role: 'Web Developer',
     company: 'Early Career',
     companyUrl: '#',
