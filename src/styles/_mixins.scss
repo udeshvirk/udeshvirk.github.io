@@ -1,0 +1,57 @@
+// Reusable SCSS Mixins
+@use "variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin section-base {
+  padding: $section-padding;
+  @media (max-width: 768px) {
+    padding: $section-padding-mobile;
+  }
+}
+
+@mixin glass-card {
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  backdrop-filter: $glass-blur;
+  border-radius: $radius-lg;
+}
+
+@mixin gradient-text($from: $color-indigo-400, $to: $color-cyan-400) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin hover-lift {
+  transition: $transition-base;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  }
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: 640px) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: 768px) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: 1024px) { @content; }
+  }
+}
+
+@mixin glow($color: $color-indigo-500, $size: 60px) {
+  box-shadow: 0 0 $size rgba($color, 0.3);
+}

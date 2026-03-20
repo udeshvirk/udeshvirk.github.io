@@ -1,0 +1,37 @@
+// SCSS Variables — Design Tokens
+// These are used via the additionalData injection in vite.config.ts
+
+// Brand Colors
+$color-navy-900: #0a0e1a;
+$color-navy-800: #0d1424;
+$color-navy-700: #111827;
+$color-navy-600: #1a2236;
+$color-indigo-400: #818cf8;
+$color-indigo-500: #6366f1;
+$color-cyan-400: #22d3ee;
+$color-violet-400: #a78bfa;
+$color-rose-400: #fb7185;
+
+// Typography
+$font-sans: 'Inter', system-ui, sans-serif;
+$font-display: 'Space Grotesk', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// Spacing
+$section-padding: 6rem 1.5rem;
+$section-padding-mobile: 4rem 1rem;
+
+// Border radius
+$radius-sm: 0.5rem;
+$radius-md: 0.75rem;
+$radius-lg: 1rem;
+$radius-xl: 1.5rem;
+
+// Glassmorphism
+$glass-bg: rgba(255, 255, 255, 0.04);
+$glass-border: rgba(255, 255, 255, 0.08);
+$glass-blur: blur(16px);
+
+// Transitions
+$transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);

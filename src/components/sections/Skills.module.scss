@@ -1,0 +1,23 @@
+.levelBadge {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-indigo-400;
+  background: rgba($color-indigo-500, 0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid rgba($color-indigo-500, 0.2);
+}
+
+.barTrack {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, $color-indigo-500, $color-cyan-400);
+  box-shadow: 0 0 8px rgba($color-indigo-500, 0.4);
+}

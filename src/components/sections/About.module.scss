@@ -1,0 +1,25 @@
+.bioText {
+  > p + p {
+    margin-top: 1.25rem;
+  }
+}
+
+.avatarCard {
+  @include glass-card;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $color-indigo-500, $color-violet-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+}

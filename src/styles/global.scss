@@ -1,0 +1,108 @@
+// Global Styles — Resets, Base, Custom Scrollbar
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// ─── Fonts ───────────────────────────────────────────────────────────────────
+@layer base {
+  :root {
+    --color-bg: #{$color-navy-900};
+    --color-surface: #{$color-navy-800};
+    --color-accent: #{$color-indigo-500};
+    --color-accent-2: #{$color-cyan-400};
+    --color-text: #e2e8f0;
+    --color-muted: #94a3b8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: $font-sans;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-display;
+    font-weight: 700;
+  }
+
+  // Custom scrollbar
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $color-navy-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $color-indigo-500;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color-indigo-400;
+  }
+}
+
+// ─── Utilities ────────────────────────────────────────────────────────────────
+@layer utilities {
+  .gradient-text {
+    @include gradient-text;
+  }
+
+  .glass-card {
+    @include glass-card;
+  }
+
+  .section-padding {
+    @include section-base;
+  }
+
+  .hover-lift {
+    @include hover-lift;
+  }
+
+  .font-display {
+    font-family: $font-display;
+  }
+
+  .font-mono {
+    font-family: $font-mono;
+  }
+}
+
+// ─── Animations ──────────────────────────────────────────────────────────────
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes blob-pulse {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  33% { transform: scale(1.1) translate(20px, -20px); }
+  66% { transform: scale(0.9) translate(-15px, 15px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

@@ -1,0 +1,21 @@
+.featuredCard {
+  @include glass-card;
+  overflow: hidden;
+  transition: $transition-base;
+  cursor: default;
+}
+
+.cardGradient {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+  opacity: 0.9;
+}
+
+.smallCard {
+  @include glass-card;
+  padding: 1.25rem 1.5rem;
+  transition: $transition-base;
+  cursor: default;
+}

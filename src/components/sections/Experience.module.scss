@@ -1,0 +1,63 @@
+.timelineSpine {
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    $color-indigo-500,
+    rgba($color-indigo-500, 0.3),
+    transparent
+  );
+}
+
+.timelineItem {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.dot {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: $color-navy-800;
+  border: 2px solid rgba($color-indigo-500, 0.3);
+  flex-shrink: 0;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: rgba($color-indigo-500, 0.3);
+    transition: all 0.3s ease;
+  }
+}
+
+.dotActive {
+  border-color: $color-indigo-500;
+  box-shadow: 0 0 16px rgba($color-indigo-500, 0.4);
+
+  &::after {
+    background: $color-indigo-500;
+  }
+}
+
+.card {
+  @include glass-card;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: $transition-base;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.cardActive {
+  border-color: rgba($color-indigo-500, 0.25);
+  background: rgba($color-indigo-500, 0.05);
+}
