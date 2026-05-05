@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
     const body = encodeURIComponent(
       `Hi Udesh,\n\n${formState.message}\n\nFrom: ${formState.name} (${formState.email})`
     );
-    window.open(`mailto:${profile.links.email}?subject=${subject}&body=${body}`, '_blank');
+    window.location.href = `mailto:${profile.links.email}?subject=${subject}&body=${body}`;
     setSent(true);
     setTimeout(() => setSent(false), 4000);
   };
@@ -51,12 +51,16 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-slate-300 text-lg leading-relaxed mb-8"
+              className="text-slate-300 text-lg leading-relaxed mb-3"
             >
               I'm always open to discussing new opportunities, interesting projects,
               or just having a conversation about frontend architecture and platform engineering.
               Let's connect!
             </motion.p>
+            <p className="text-slate-500 text-sm mb-8">
+              The form below opens your default email client with the message pre-filled —
+              or reach out directly via any of the links.
+            </p>
 
             <div className="flex items-center gap-2 text-slate-500 text-sm mb-10">
               <FiMapPin size={14} className="text-indigo-400" />
@@ -153,7 +157,7 @@ const Contact: React.FC = () => {
                 ) : (
                   <>
                     <FiSend size={15} />
-                    Send Message
+                    Open in Email Client
                   </>
                 )}
               </motion.button>

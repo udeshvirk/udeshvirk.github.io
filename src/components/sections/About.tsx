@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
-import { profile } from '@/data/profile';
-import { FiMapPin, FiCode, FiLayers, FiTrendingUp } from 'react-icons/fi';
+import { profile, education } from '@/data/profile';
+import { FiMapPin, FiCode, FiLayers, FiTrendingUp, FiBookOpen } from 'react-icons/fi';
 import styles from './About.module.scss';
 
 const highlights = [
@@ -10,19 +10,19 @@ const highlights = [
     icon: FiCode,
     title: 'Full-Stack Frontend',
     description: 'Deep expertise across the entire frontend spectrum — from pixels to architecture.',
-    color: 'from-indigo-500 to-indigo-600',
+    color: 'from-indigo-400 to-indigo-500',
   },
   {
     icon: FiLayers,
     title: 'Platform Engineering',
     description: 'Building the foundations: design systems, micro-frontends, shared infra.',
-    color: 'from-cyan-500 to-cyan-600',
+    color: 'from-indigo-500 to-indigo-600',
   },
   {
     icon: FiTrendingUp,
     title: 'Performance Obsessed',
     description: 'Core Web Vitals, bundle optimization, and render performance as first-class concerns.',
-    color: 'from-violet-500 to-violet-600',
+    color: 'from-indigo-600 to-indigo-700',
   },
 ];
 
@@ -55,23 +55,41 @@ const About: React.FC = () => {
               ))}
             </div>
 
-            {/* Location badge */}
+            {/* Location + Education */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="flex items-center gap-2 text-slate-500 text-sm mt-4"
+              className="flex flex-col gap-2 mt-4 text-sm text-slate-500"
             >
-              <FiMapPin size={14} className="text-indigo-400" />
-              <span>{profile.location}</span>
-              <span className="mx-2">·</span>
-              <span className="text-indigo-400 font-medium">{profile.currentCompany}</span>
+              <div className="flex items-center gap-2">
+                <FiMapPin size={14} className="text-indigo-400" aria-hidden />
+                <span>{profile.location}</span>
+                <span className="mx-2">·</span>
+                <span className="text-indigo-400 font-medium">{profile.currentCompany}</span>
+              </div>
+              {education.map((edu, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <FiBookOpen
+                    size={14}
+                    className="text-indigo-400 mt-0.5 flex-shrink-0"
+                    aria-hidden
+                  />
+                  <span>
+                    {edu.degree}, {edu.field}
+                    <span className="mx-2 text-slate-600">·</span>
+                    {edu.institution}
+                    <span className="mx-2 text-slate-600">·</span>
+                    {edu.period}
+                  </span>
+                </div>
+              ))}
             </motion.div>
 
             {/* Tech highlights pill row */}
             <div className="flex flex-wrap gap-2 mt-6">
-              {['React', 'TypeScript', 'Vue.js', 'Vite', 'SCSS', 'Tailwind', 'Angular', 'Node.js'].map(
+              {['React', 'Vue.js', 'TypeScript', 'Module Federation', 'Webpack', 'Kubernetes', 'AWS S3', 'SCSS'].map(
                 (tech, i) => (
                   <motion.span
                     key={tech}

@@ -106,3 +106,23 @@
   from { transform: scaleX(0); }
   to { transform: scaleX(1); }
 }
+
+// ─── Reduced Motion ─────────────────────────────────────────────────────────
+// Honor the user's OS-level preference for reduced motion.
+// Disables CSS animations/transitions and smooth scroll.
+// JS-driven motion (Framer Motion, the typewriter) is handled per-component
+// via the useReducedMotion hook.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

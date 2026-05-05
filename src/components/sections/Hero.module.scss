@@ -29,26 +29,6 @@
   animation-delay: 0s;
 }
 
-.blobCyan {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, $color-cyan-400, transparent 70%);
-  top: 30%;
-  right: -100px;
-  animation-delay: 4s;
-  opacity: 0.15;
-}
-
-.blobViolet {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, $color-violet-400, transparent 70%);
-  bottom: -100px;
-  left: 40%;
-  animation-delay: 8s;
-  opacity: 0.2;
-}
-
 .grid {
   position: absolute;
   inset: 0;
@@ -75,6 +55,3 @@
   50% { opacity: 0; }
 }
 
-.statValue {
-  @include gradient-text($color-indigo-400, $color-violet-400);
-}

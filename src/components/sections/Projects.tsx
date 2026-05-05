@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiLock } from 'react-icons/fi';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { projects } from '@/data/profile';
 import styles from './Projects.module.scss';
@@ -8,6 +8,7 @@ import styles from './Projects.module.scss';
 const Projects: React.FC = () => {
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
+  const hasRest = rest.length > 0;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -29,7 +30,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Featured projects */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className={`grid md:grid-cols-2 gap-6 ${hasRest ? 'mb-8' : ''}`}>
           {featured.map((project, i) => (
             <motion.div
               key={project.id}
@@ -63,15 +64,38 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
                 <div className="flex items-center gap-3">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-white transition-colors"
-                    >
-                      <FiGithub size={16} />
-                    </a>
+                  {project.proprietary ? (
+                    <span className="inline-flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+                      <FiLock size={12} />
+                      Proprietary — see Experience for context
+                    </span>
+                  ) : (
+                    <>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} live demo`}
+                          className="inline-flex items-center gap-1.5 text-slate-300 hover:text-indigo-400 transition-colors text-xs font-medium"
+                        >
+                          <FiExternalLink size={14} />
+                          Live demo
+                        </a>
+                      )}
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} source on GitHub`}
+                          className="inline-flex items-center gap-1.5 text-slate-300 hover:text-indigo-400 transition-colors text-xs font-medium"
+                        >
+                          <FiGithub size={14} />
+                          Source
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -80,7 +104,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Other projects */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
+        {hasRest && <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {rest.map((project, i) => (
             <motion.div
               key={project.id}
@@ -125,7 +149,7 @@ const Projects: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div>}
 
         {/* GitHub CTA */}
         <motion.div

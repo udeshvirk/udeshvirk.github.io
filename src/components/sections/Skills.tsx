@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
-import { skills } from '@/data/profile';
+import { skills, type SkillTier } from '@/data/profile';
 import styles from './Skills.module.scss';
 
+const TIER_STYLES: Record<SkillTier, string> = {
+  Expert: styles.tierExpert,
+  Advanced: styles.tierAdvanced,
+  Working: styles.tierWorking,
+};
+
+const categories = Object.keys(skills);
+
 const Skills: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>(Object.keys(skills)[0]);
-  const categories = Object.keys(skills);
+  const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
 
   return (
     <SectionWrapper id="skills" className="py-24">
@@ -43,40 +50,37 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.35 }}
           className="grid sm:grid-cols-2 gap-4"
         >
-          {(skills as Record<string, { name: string; level: number }[]>)[activeCategory].map(
-            (skill, i) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.06 }}
-                className="glass-card p-4"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-medium text-slate-200 text-sm">{skill.name}</span>
-                  <span className={styles.levelBadge}>{skill.level}%</span>
-                </div>
-                <div className={styles.barTrack}>
-                  <motion.div
-                    className={styles.barFill}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 0.8, delay: i * 0.06, ease: 'easeOut' }}
-                  />
-                </div>
-              </motion.div>
-            )
-          )}
+          {skills[activeCategory].map((skill, i) => (
+            <motion.div
+              key={skill.name}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.06 }}
+              className="glass-card p-4 flex items-center justify-between"
+            >
+              <span className="font-medium text-slate-200 text-sm">{skill.name}</span>
+              <span className={`${styles.tierBadge} ${TIER_STYLES[skill.tier]}`}>
+                {skill.tier}
+              </span>
+            </motion.div>
+          ))}
         </motion.div>
+
+        {/* Tier legend */}
+        <p className="mt-6 text-slate-500 text-xs font-mono">
+          <span className="text-indigo-300">Expert</span> = daily, deep, ship-it confidence ·{' '}
+          <span className="text-cyan-300">Advanced</span> = comfortable in production ·{' '}
+          <span className="text-slate-300">Working</span> = productive with reference
+        </p>
 
         {/* All tags cloud */}
         <div className="mt-16">
           <p className="text-slate-500 text-sm font-medium mb-4 uppercase tracking-wider">Also experienced with</p>
           <div className="flex flex-wrap gap-2">
             {[
-              'GraphQL', 'REST APIs', 'Webpack', 'Rollup', 'Jest', 'Vitest', 'Cypress',
-              'Docker', 'AWS', 'Storybook', 'Figma', 'Git', 'GitHub Actions', 'Turborepo',
-              'Nx', 'pnpm', 'Web Workers', 'WebSockets', 'IndexedDB', 'PWAs',
+              'GraphQL', 'REST APIs', 'Storybook', 'Rollup', 'GitHub Actions',
+              'Jest', 'Vitest', 'Cypress',
+              'Web Workers', 'WebSockets', 'IndexedDB', 'PWAs', 'Docker',
             ].map((tech, i) => (
               <motion.span
                 key={tech}

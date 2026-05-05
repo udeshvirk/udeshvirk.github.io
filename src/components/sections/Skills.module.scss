@@ -1,23 +1,26 @@
-.levelBadge {
+.tierBadge {
   font-family: $font-mono;
   font-size: 0.7rem;
-  color: $color-indigo-400;
-  background: rgba($color-indigo-500, 0.1);
-  padding: 2px 8px;
+  font-weight: 500;
+  padding: 3px 10px;
   border-radius: 100px;
-  border: 1px solid rgba($color-indigo-500, 0.2);
+  letter-spacing: 0.02em;
 }
 
-.barTrack {
-  height: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 2px;
-  overflow: hidden;
+.tierExpert {
+  color: #c7d2fe;
+  background: rgba($color-indigo-500, 0.15);
+  border: 1px solid rgba($color-indigo-500, 0.35);
 }
 
-.barFill {
-  height: 100%;
-  border-radius: 2px;
-  background: linear-gradient(90deg, $color-indigo-500, $color-cyan-400);
-  box-shadow: 0 0 8px rgba($color-indigo-500, 0.4);
+.tierAdvanced {
+  color: #a5f3fc;
+  background: rgba($color-cyan-400, 0.12);
+  border: 1px solid rgba($color-cyan-400, 0.3);
+}
+
+.tierWorking {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
